@@ -1,33 +1,29 @@
-import { AddOutlined } from '@mui/icons-material'
-import { IconButton, Typography } from '@mui/material'
-import React from 'react'
-import { JournalLayout } from '../Layout/JournalLayout'
-import { NoteView, NothingSelectedView } from '../View'
+import { JournalLayout } from "../Layout/JournalLayout";
+import { Carousell } from "../Components/Carousel";
+import { CarouselView } from "../Components/CarouselView";
+import { SimplePaper } from "../Components/SimplePaper";
+import { CarouselMathiMotos } from "../Components/CarouselMathiMotos";
+import { CarouselLogo } from "../Components/CarouselLogo";
 // import { NoteView, NothingSelectedView } from '../View'
 
 export const JournalPage = () => {
   return (
+    <>
+     
+        <Carousell/>
 
-    <JournalLayout>
+        {/* {boton ? <NothingSelectedView /> : <NoteView />} */}
 
-      <NothingSelectedView/>
-     {/* <NoteView/> */}
+        <SimplePaper />
 
-      <IconButton 
-        size='large'
-        sx={ { 
-          color: 'white',
-          backgroundColor: 'error.main',
-          ':hover': { backgroundColor: 'green', opacity: 0.9},
-          position: 'fixed',
-          right: 50,
-          bottom: 50
-        } }
-      >
+        <CarouselView text={"Motos"} />
 
-        <AddOutlined sx={ { fontSize: 30 } }/>
+        <CarouselMathiMotos/>
 
-      </IconButton>
-    </JournalLayout>
-  )
-}
+        <CarouselView text={"Repuestos"} />
+
+        <CarouselLogo/>
+    
+    </>
+  );
+};

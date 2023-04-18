@@ -1,28 +1,42 @@
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material'
 import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material'
-import React from 'react'
+import { grey } from "@mui/material/colors";
 
-export const NavBar = ({drawerWidth = 240}) => {
+
+export const NavBar = ({drawerWidth, handleDrawerOpen, open}) => {
+
   return (
     <AppBar 
         position='fixed'
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` }
+          
+          ml: { sm: `${drawerWidth}px` },
+          // backgroundColor: "#121212",
+          // width:  {sm: `calc(100% - ${drawerWidth}px)`}
         }}
     >
       <Toolbar>
         <IconButton 
-          color='inherit'
-          edge= 'start'
-          sx={ { mr: 2, display: { sm: 'none'  } } }
+          edge = 'start'
+          color='secondary'
+          // sx={ { mr: 2, display: { sm: 'none'  } } }
+          onClick={handleDrawerOpen}
+          sx={{ display: open ? "none" : "" }}
         >
           <MenuOutlined/>
         </IconButton>
 
         <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-            <Typography variant='h6' noWrap component='div'>
-              JournalApp
+            <Typography variant='h2' noWrap component='div' color={grey[50]} sx={{fontSize: 12}}>
+              ENVIOS <b>SIN CARGO</b> &nbsp; &nbsp; | &nbsp; &nbsp; 3 CUOTAS SIN INTERES <br/> Oran - Salta
+            </Typography>
+
+            <Typography variant='h2' noWrap component='div' color={grey[50]} sx={{fontSize: 16, position: 'relative', left: 550}}>
+              Locales
+            </Typography>
+
+            <Typography variant='h2' noWrap component='div' color={grey[50]} sx={{fontSize: 16, position: 'relative', left: 270}}>
+              Ayuda
             </Typography>
 
             <IconButton color='error'>
@@ -30,7 +44,8 @@ export const NavBar = ({drawerWidth = 240}) => {
             </IconButton>
         </Grid>
       </Toolbar>
-
     </AppBar>
   )
 }
+
+

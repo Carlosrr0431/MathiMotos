@@ -1,25 +1,91 @@
-import { Toolbar } from '@mui/material';
-import { Box } from '@mui/system'
-import React from 'react'
-import { NavBar, SideBar } from '../Components';
+import { NavBar, SideBar } from "../Components";
+import {
+  Box,
+  Toolbar,
+  Grid,
+} from "@mui/material";
 
-const drawerWidth = 240;
+import { useState } from "react";
 
-export const JournalLayout = ( {children} ) => {
+export const JournalLayout = ({ children }) => {
+  const [open, setOpen] = useState(true);
+  const [drawerWidth, setDrawerWidth] = useState(240);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+    setDrawerWidth(240);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+    setDrawerWidth(0);
+    
+  };
+
   return (
-    <Box sx={{display:'flex'}}>
-        <NavBar drawerWidth={drawerWidth}/>
+    <Grid sx={{ display: "flex" }}>
+      <NavBar drawerWidth={drawerWidth} handleDrawerOpen = {handleDrawerOpen} open = {open} />
 
-        <SideBar drawerWidth={drawerWidth}/>
+      <SideBar drawerWidth={drawerWidth} setDrawerWidth = {setDrawerWidth} open = {open} handleDrawerOpen = {handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
 
-        <Box 
-            component='main'
-            sx={{ flexGrow: 1, p: 2 }}
-        >
-             <Toolbar/>
+      <Box component="main" sx={{ flexGrow: 1, p: 2 }}>
+        <Toolbar />
+        {children}
+      </Box>
+    </Grid>
+    // <Box sx={{ display: "flex" }}>
+    //   <CssBaseline />
+    //   <AppBar position="fixed" open={open}>
+    //     <Toolbar>
+    //       <IconButton
+    //         color="inherit"
+    //         aria-label="open drawer"
+    //         onClick={handleDrawerOpen}
+    //         edge="start"
+    //         sx={{ mr: 2, ...(open && { display: "none" }) }}
+    //       >
+    //         <MenuOutlined />
+    //       </IconButton>
+    // 
+    //     </Toolbar>
+    //   </AppBar>
+    //   <Drawer
+    //     sx={{
+    //       width: drawerWidth,
+    //       flexShrink: 0,
+    //       "& .MuiDrawer-paper": {
+    //         width: drawerWidth,
+    //         boxSizing: "border-box",
+    //       },
+    //     }}
+    //     variant="persistent"
+    //     anchor="left"
+    //     open={open}
+    //   >
+    //     <Toolbar>
+    //       <IconButton onClick={handleDrawerClose}>
+    //         <MenuOutlined />
+    //       </IconButton>
+    //     </Toolbar>
 
-             {children}
-        </Box>
-    </Box>
-  )
-}
+    //     <List>
+    //       {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+    //         <ListItem key={text} disablePadding>
+    //           <ListItemButton>
+    //             <ListItemIcon>
+    //               {index % 2 === 0 ? <InboxOutlined /> : <MailOutline />}
+    //             </ListItemIcon>
+    //             <ListItemText primary={text} />
+    //           </ListItemButton>
+    //         </ListItem>
+    //       ))}
+    //     </List>
+    //   </Drawer>
+
+    //   <Box >
+    //         {children}
+    //   </Box>
+
+    // </Box>
+  );
+};

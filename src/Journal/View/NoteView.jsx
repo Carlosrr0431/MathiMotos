@@ -1,9 +1,31 @@
 import { SaveOutlined } from '@mui/icons-material'
 import { Button, Grid, TextField, Typography } from '@mui/material'
-import React from 'react'
 import { ImagenGalery } from '../Components'
+import { useForm } from '../../hooks/useForm'
+import { usePosts } from '../../context/PostContext'
 
 export const NoteView = () => {
+
+    const {createPosts, setBoton} = usePosts();
+
+    const {form, onInputChange} = useForm({
+        title: '',
+        description: ''
+    });
+
+    const {title, description} = form;
+
+    const handledSubmit = async(e) => {
+        e.preventDefault();
+
+        await createPosts(form);
+
+        setBoton(true);
+
+        console.log(form);
+    }
+
+
   return (
     <Grid container direction='row' justifyContent='space-between' alignItems='center' sx = { { mb: 1 } }>
         <Grid item>
@@ -17,7 +39,7 @@ export const NoteView = () => {
             </Button>
         </Grid>
 
-        <Grid container>
+        <Grid component='form' onSubmit={handledSubmit} container>
             <TextField 
                 type='text' 
                 variant='filled'
@@ -26,17 +48,27 @@ export const NoteView = () => {
                 label= 'Titulo'
                 sx= { { border: 'none', mb: 1 } }
                 minRows={5}
+                name='title'
+                value={title}
+                onChange={onInputChange}
+                
             />
 
             <TextField 
                 type='text' 
                 variant='filled'
                 fullWidth
-                placeholder='¿Que sucedio en el dia de hoy?'
+                placeholder='Descripcion'
+                label='Descripcion'
                 multiline
                 sx= { { border: 'none', mb: 1 } }
-                minRows={5}
+                rows={3}
+                name='description'
+                value={description}
+                onChange={onInputChange}
             />
+
+            <Button type='submit' variant='outlined'> Guardar </Button>
         </Grid>
 
         <ImagenGalery/>

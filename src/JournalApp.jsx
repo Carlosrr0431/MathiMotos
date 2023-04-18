@@ -1,11 +1,17 @@
-import React from 'react'
-import { AppRouter } from './router/AppRouter'
-import { AppTheme } from './theme'
+import { AppRouter } from "./router/AppRouter";
+import { AppTheme } from "./theme";
+import { PostProvider } from "./context/PostContext";
+
+import axios from 'axios';
+
+axios.defaults.baseURL = "https://deploy-production-5e67.up.railway.app/";
 
 export const JournalApp = () => {
   return (
-    <AppTheme>
-        <AppRouter/>
-    </AppTheme>
-  )
-}
+    <PostProvider>
+      <AppTheme>
+        <AppRouter />
+      </AppTheme>
+    </PostProvider>
+  );
+};
