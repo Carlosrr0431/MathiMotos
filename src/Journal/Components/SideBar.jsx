@@ -51,9 +51,10 @@ export const SideBar = ({ drawerWidth = 240, open, handleDrawerClose }) => {
       >
         <Toolbar>
           <IconButton color="inherit" onClick={() => navigate('/')}>
-            <Typography variant="h6" noWrap component="div">
+            {/* <Typography variant="h6" noWrap component="div">
               MathiMotos
-            </Typography>
+            </Typography> */}
+            <img src="src/motosImg/MATHIMOTOS.png" style={ {width: 100}}/>
           </IconButton>
           <IconButton
             color="inherit"

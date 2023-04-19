@@ -52,10 +52,10 @@ export const CarouselView = ({text}) => {
 
   return (
     <>
-      <div style={{ display: "flex", right: "50px", textAlign:'letf' }}>
-        <h2 style={{ display: "flex", right: "100px", bottom: "100px", textAlign:'letf' }}>{text}</h2>
-      </div>
-      <Carousel autoPlay sx={{ marginBlockEnd: 2, lineHeight: 0 }} animation="slide" cycleNavigation>
+      {/* <div style={{ display: "flex", right: "50px", left: 100 }}>
+        <h2 style={{ display: "flex", right: "100px", bottom: "100px", textAlign:'letf', left: 100 }}>{text}</h2>
+      </div> */}
+      <Carousel autoPlay sx={{ marginBlockEnd: 9, lineHeight: 0, left: 100 }} animation="slide" cycleNavigation>
         {items.map((item, i) => (
           <ItemView key={i} item={item} />
         ))}

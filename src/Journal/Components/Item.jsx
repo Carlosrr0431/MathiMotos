@@ -1,16 +1,35 @@
-import { Paper } from "@mui/material";
+import { Box } from "@mui/material";
 
 export const Item = ({ item }) => {
   return (
-    <Paper>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <h2>{item.title}</h2>
-      </div>
+    <Box
+      src={item.img}
+      component="img"
+      sx={{
+        display: "flex",
+        flexWrap: "wrap",
+        "& > :not(style)": {
+          m: 0,
+          width: '100%',
+          // height: 120,
+          // position: 'relative',
+        },
+        width: '100%',
+        height: 500, 
+        // right: 1000,
+        overflow: 'auto'
 
-      <img
-        src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-        style={{ width: "100%", height: "45vh" }}
-      />
-    </Paper>
+      }}
+    >
+      {/* <div style={{ display: "flex", justifyContent: "center" }}>
+        <h2>{item.title}</h2>
+      </div> */}
+
+      {/* <img
+        src={item.img}
+        // style={{ width: "100%", height: "70vh", position: 'relative', justifyContent: 'inherit', paddingLeft: 0,
+        // paddingRight: 0 }}
+      /> */}
+    </Box>
   );
 };

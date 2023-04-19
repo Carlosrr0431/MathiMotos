@@ -25,10 +25,10 @@ export const JournalLayout = ({ children }) => {
   return (
     <Grid sx={{ display: "flex" }}>
       <NavBar drawerWidth={drawerWidth} handleDrawerOpen = {handleDrawerOpen} open = {open} />
+ 
+      <SideBar drawerWidth={drawerWidth} setDrawerWidth = {setDrawerWidth} open = {open} handleDrawerOpen = {handleDrawerOpen} handleDrawerClose={handleDrawerClose} /> 
 
-      <SideBar drawerWidth={drawerWidth} setDrawerWidth = {setDrawerWidth} open = {open} handleDrawerOpen = {handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
-
-      <Box component="main" sx={{ flexGrow: 1, p: 2 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 0 }}>
         <Toolbar />
         {children}
       </Box>

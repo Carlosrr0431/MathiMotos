@@ -11,11 +11,11 @@ export const SimplePaper = () => {
         "& > :not(style)": {
           m: 5,
           width: 450,
-          height: 100,
+          height: 100
         },
       }}
     >
-      <Paper elevation={1} square>
+      <Paper elevation={1} square sx={{left: 130, position: 'relative'}}>
         <ImageList sx={{ width: "50%", height: 100 }} cols={4} rowHeight={0}>
           <ImageListItem sx={{ right: -50, bottom: -5 }}>
             <img
@@ -53,7 +53,7 @@ export const SimplePaper = () => {
         
       </Paper>
 
-      <Paper elevation={1}></Paper>
+      <Paper elevation={1} square sx={{left: 100, position: 'relative'}}></Paper>
     </Box>
   );
 };
