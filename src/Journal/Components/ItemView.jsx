@@ -1,7 +1,4 @@
-import {
-  Box,
-  Paper,
-} from "@mui/material";
+import { Box, Paper } from "@mui/material";
 import { CardTask } from "./CardTask";
 
 export const ItemView = ({ item }) => {
@@ -13,22 +10,30 @@ export const ItemView = ({ item }) => {
         "& > :not(style)": {
           m: 1,
           width: 250,
-          height: 250,
+          height: 250
         },
       }}
     >
-      <Paper>
+      {/* <Paper>
         <CardTask post={item[0]} />
       </Paper>
-      <Paper elevation={3}>
+      <Paper >
         <CardTask post={item[1]} />
       </Paper>
-      <Paper elevation={3}>
+      <Paper >
         <CardTask post={item[2]} />
       </Paper>
-      <Paper elevation={3}>
+      <Paper >
         <CardTask post={item[3]} />
-      </Paper>
+      </Paper> */}
+
+      {item.map((i) => {
+        return (
+          <Paper>
+            <CardTask post={i} />
+          </Paper>
+        );
+      })}
     </Box>
   );
 };

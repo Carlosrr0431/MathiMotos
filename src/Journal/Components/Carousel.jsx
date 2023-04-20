@@ -1,11 +1,10 @@
 import Carousel from "react-material-ui-carousel";
 import { Item } from "./Item";
-import { Box, CardMedia, Grid, ImageList, ImageListItem } from "@mui/material";
 
 export const Carousell = () => {
   const items = [
     {
-      img: "/src/motosImg/1.png",
+      img: "/src/motosImg/1.jpg",
       title: "Harley-Davidson",
     },
     {
@@ -13,17 +12,9 @@ export const Carousell = () => {
       title: "Gilera 150 cv",
     },
     {
-      img: "/src/motosImg/MATHIMOTOS.png",
+      img: "/src/motosImg/3.jpg",
       title: "Harley-Davidson",
-    },
-    {
-      img: "src/motosImg/cropped-3840-2160-598475.jpg",
-      title: "Harley-Davidson",
-    },
-    {
-      img: "src/motosImg/stretched-5120-2880-541771.jpg",
-      title: "Harley-Davidson",
-    },
+    }
     // {
     //   img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
     //   title: "Honey",
@@ -63,11 +54,14 @@ export const Carousell = () => {
       //   },
       // }}
       autoPlay
+
       sx={
         {
           // marginBlockEnd: 0,
           paddingLeft: 0,
-          paddingRight: 0
+          paddingRight: 0,
+          paddingTop: -4,
+          marginTop: -2
           // lineHeight: 0,
           // width: "100%",
           // display: "contents",

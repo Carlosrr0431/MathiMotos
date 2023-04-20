@@ -17,8 +17,6 @@ export const Item = ({ item }) => {
         width: '100%',
         height: 500, 
         // right: 1000,
-        overflow: 'auto'
-
       }}
     >
       {/* <div style={{ display: "flex", justifyContent: "center" }}>

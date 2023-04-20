@@ -1,35 +1,31 @@
-import { ImageList, ImageListItem} from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 
-export const ViewLogo = () => {
+export const ViewLogo = ({item}) => {
   return (
     <Box
       sx={{
         display: "flex",
         flexWrap: "wrap",
         "& > :not(style)": {
-          m: 5,
-          width: 1000,
+          m: 0,
+          width: '100%',
           height: 150,
-        },
-      }}
+        }
+      }
+    }
     >
-      <Paper elevation={10} square>
-
-        <ImageList sx={{ width: 1740, height: 135, display: 'flex'}} cols={1} rowHeight={0}>
-          <ImageListItem sx={{ margin: 'auto', display: 'block', right: 500, position: 'relative', bottom: 200}}>
-            <img
-              src={`src/motosImg/mati.jpg`}
-              srcSet={`src/motosImg/mati.jpg`}
-              loading="lazy"
-              style={{margin: 'auto', display: 'block'}}
-              
-            />
-          </ImageListItem>
-        </ImageList>
-        
+      <Paper elevation={0} square sx={{left: 0, position: 'relative'}}>
+        <img
+          src={item.img}
+          srcSet={item.img}
+          loading="lazy"
+          style={{width: '100%', height: '100%'}}
+        />
       </Paper>
+      
+
+      
     </Box>
   );
 };

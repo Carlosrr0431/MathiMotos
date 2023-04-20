@@ -18,7 +18,7 @@ export const JournalPage = () => {
 
         <CarouselView text={"Motos"} />
 
-        <CarouselMathiMotos/>
+        {/* <CarouselMathiMotos/> */}
 
         <CarouselView text={"Repuestos"} />
 

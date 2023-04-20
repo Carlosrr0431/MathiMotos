@@ -18,6 +18,18 @@ export const usePosts = () => {
 export const PostProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [boton, setBoton] = useState(true);
+  const [open, setOpen] = useState(true);
+  const [drawerWidth, setDrawerWidth] = useState(240);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+    setDrawerWidth(240);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+    setDrawerWidth(0);
+  };
 
   const getPosts = async () => {
     const res = await getPostsRequests();
@@ -45,13 +57,13 @@ export const PostProvider = ({ children }) => {
     const res = await gestPostRequest(id);
 
     return res.data;
-  }
+  };
 
   const updatePost = async (id, post) => {
     const res = await updatePostRequest(id, post);
 
-    setPosts(posts.map( post => post._id === id ? res.data : post  ));
-  }
+    setPosts(posts.map((post) => (post._id === id ? res.data : post)));
+  };
 
   useEffect(() => {
     getPosts();
@@ -67,7 +79,13 @@ export const PostProvider = ({ children }) => {
         getPost,
         updatePost,
         boton,
-        setBoton
+        setBoton,
+        handleDrawerOpen,
+        open,
+        handleDrawerClose,
+        drawerWidth,
+        setDrawerWidth
+
       }}
     >
       {children}

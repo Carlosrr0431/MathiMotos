@@ -16,12 +16,12 @@ export const CardTask = ({ post }) => {
         sx={{
           width: "100%",
           height: "100%",
-          m: 2,
+          m: 0,
           px: 0,
           justifyContent: "center",
           maxHeight: "100%",
           marginLeft: 0,
-          marginRight: 0,
+          marginRight: 0
         }}
       >
         <CardActionArea>
@@ -41,9 +41,9 @@ export const CardTask = ({ post }) => {
           </CardContent>
           {/* <Button sx={{ position: 'relative', right: -80, bottom: 15}}>Mas info</Button> */}
         </CardActionArea>
-        <CardActions>
+        {/* <CardActions>
           <Button sx={{ position: 'relative', right: -80, bottom: -5, height: 30, justifyContent: "center"}} > Ver mas...</Button>
-        </CardActions>
+        </CardActions> */}
       </Card>
     </>
   );

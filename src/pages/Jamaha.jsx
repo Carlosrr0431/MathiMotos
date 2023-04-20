@@ -5,7 +5,7 @@ export const Jamaha = () => {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <h2>Jamaha</h2>
+        <h2>Yamaha</h2>
       </div>
       <CarouselView text={"150 cc"} />
 

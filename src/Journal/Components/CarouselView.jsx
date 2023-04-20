@@ -1,7 +1,10 @@
 import Carousel from "react-material-ui-carousel";
 import { ItemView } from "./ItemView";
+import { usePosts } from "../../context/PostContext";
 
-export const CarouselView = ({text}) => {
+export const CarouselView = () => {
+  const { open } = usePosts();
+
   const items = [
     [
       {
@@ -55,7 +58,35 @@ export const CarouselView = ({text}) => {
       {/* <div style={{ display: "flex", right: "50px", left: 100 }}>
         <h2 style={{ display: "flex", right: "100px", bottom: "100px", textAlign:'letf', left: 100 }}>{text}</h2>
       </div> */}
-      <Carousel autoPlay sx={{ marginBlockEnd: 9, lineHeight: 0, left: 100 }} animation="slide" cycleNavigation>
+      <Carousel
+        indicatorIconButtonProps={{
+          style: {
+            // color: "blue", // 3
+            right: open ? "25px" : "140px",
+          },
+        }}
+        navButtonsProps={{
+          style: {
+            // color: "blue", // 3
+            right: open ? "25px" : "140px",
+            // padding: 4,
+            backgroundColor: 'ActiveBorder',
+            borderRadius: 0
+          },
+        }}
+        autoPlay
+        sx={{
+          
+          marginBlockEnd: 5,
+          width: '100%',
+          lineHeight: 2,
+          right: open ? "-35px" : "-145px",
+          paddingLeft: 0,
+          paddingRight: 0,
+          position: "relative",
+        }}
+        animation="slide"
+      >
         {items.map((item, i) => (
           <ItemView key={i} item={item} />
         ))}

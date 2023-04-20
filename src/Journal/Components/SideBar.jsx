@@ -12,14 +12,17 @@ import {
   AccordionSummary,
   Button,
   IconButton,
+  Divider,
 } from "@mui/material";
 import { ExpandMoreOutlined } from "@mui/icons-material";
 import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 import { useNavigate } from "react-router-dom";
+import { usePosts } from "../../context/PostContext";
 
-export const SideBar = ({ drawerWidth = 240, open, handleDrawerClose }) => {
+// { drawerWidth = 240, open, handleDrawerClose }
+export const SideBar = () => {
   const navigate = useNavigate();
-
+  const { drawerWidth, open, handleDrawerClose } = usePosts();
   return (
     <Box
       lineHeight={0}
@@ -39,23 +42,20 @@ export const SideBar = ({ drawerWidth = 240, open, handleDrawerClose }) => {
         sx={{
           display: { xs: "block" },
           "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
             width: drawerWidth,
             backgroundColor: "white",
             margin: 0,
             padding: 0,
             border: "none",
-            top: 64,
+            top: 75,
           },
         }}
       >
-        <Toolbar>
-          <IconButton color="inherit" onClick={() => navigate('/')}>
-            {/* <Typography variant="h6" noWrap component="div">
-              MathiMotos
-            </Typography> */}
-            <img src="src/motosImg/MATHIMOTOS.png" style={ {width: 100}}/>
-          </IconButton>
+        {/* <Divider/> */}
+        <Toolbar sx={{ marginBottom: -3 }}>
+          {/* <IconButton color="inherit" onClick={() => navigate('/')}>
+            <img src="/src/motosImg/MATHIMOTOS.svg" style={ {width: '100%', height: '100%', position: 'relative', left: -10}}/>
+          </IconButton> */}
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -63,33 +63,66 @@ export const SideBar = ({ drawerWidth = 240, open, handleDrawerClose }) => {
             edge="start"
             sx={{ display: open ? "" : "none" }}
           >
-            <KeyboardReturnIcon sx={{ position: "relative", left: 60 }} />
+            <KeyboardReturnIcon sx={{ position: "relative", left: 180 }} />
           </IconButton>
         </Toolbar>
 
         <List>
           {["Motos", "Repuestos", "Indumentaria"].map((text) => (
-            <ListItem disablePadding sx={{}} key={text}>
+            <ListItem disablePadding key={text}>
               <ListItemButton>
                 <Grid container>
-                  <Accordion style={{ backgroundColor: "#706C6C" }}>
+                  <Accordion
+                    sx={{
+                      backgroundColor: "white",
+                      border: "none",
+                      boxShadow: "none",
+                      borderBottom: "solid 1px grey",
+                    }}
+                  >
                     <AccordionSummary
                       expandIcon={<ExpandMoreOutlined />}
                       aria-controls="panel1a-content"
                       id="panel1a-header"
+                      sx={{ backgroundColor: "white", border: "none" }}
                     >
                       <Typography>{text}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                       <Button
+                        sx={{
+                          width: "100%",
+                          justifyContent: "left",
+                          right: 15,
+                        }}
                         variant="primary"
                         onClick={() => navigate("/motos/jamaha")}
                       >
                         {" "}
-                        Yamaha{" "}
+                        Jamaha{" "}
                       </Button>
-                      <Button variant="primary"> Gilera </Button>
-                      <Button variant="primary"> Motomel </Button>
+                      <Button
+                        sx={{
+                          width: "100%",
+                          justifyContent: "left",
+                          right: 15,
+                        }}
+                        variant="primary"
+                      >
+                        {" "}
+                        Gilera{" "}
+                      </Button>
+                      <Button
+                        sx={{
+                          width: "100%",
+                          justifyContent: "left",
+                          right: 15,
+                        }}
+                        variant="primary"
+                      >
+                        {" "}
+                        Motomel{" "}
+                      </Button>
                     </AccordionDetails>
                   </Accordion>
                 </Grid>

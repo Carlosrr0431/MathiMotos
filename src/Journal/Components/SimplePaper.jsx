@@ -1,8 +1,12 @@
 import { ImageList, ImageListItem, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import { usePosts } from "../../context/PostContext";
 
 export const SimplePaper = () => {
+
+  const {open} = usePosts();
+
   return (
     <Box
       sx={{
@@ -11,11 +15,12 @@ export const SimplePaper = () => {
         "& > :not(style)": {
           m: 5,
           width: 450,
-          height: 100
+          height: 100,
+          left: open ? '40px' : '150px'
         },
       }}
     >
-      <Paper elevation={1} square sx={{left: 130, position: 'relative'}}>
+      <Paper elevation={1} square sx={{left: 120, position: 'relative'}}>
         <ImageList sx={{ width: "50%", height: 100 }} cols={4} rowHeight={0}>
           <ImageListItem sx={{ right: -50, bottom: -5 }}>
             <img

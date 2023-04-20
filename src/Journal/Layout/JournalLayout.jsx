@@ -1,32 +1,39 @@
 import { NavBar, SideBar } from "../Components";
-import {
-  Box,
-  Toolbar,
-  Grid,
-} from "@mui/material";
+import { Box, Toolbar, Grid } from "@mui/material";
 
 import { useState } from "react";
+import { usePosts } from "../../context/PostContext";
 
 export const JournalLayout = ({ children }) => {
-  const [open, setOpen] = useState(true);
-  const [drawerWidth, setDrawerWidth] = useState(240);
+  // const [open, setOpen] = useState(true);
+  // const [drawerWidth, setDrawerWidth] = useState(240);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-    setDrawerWidth(240);
-  };
+  const {
+    setDrawerWidth,
+    open,
+    drawerWidth,
+    handleDrawerOpen,
+    handleDrawerClose,
+  } = usePosts();
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-    setDrawerWidth(0);
-    
-  };
+  // const handleDrawerOpen = () => {
+  //   setOpen(true);
+  //   setDrawerWidth(240);
+  // };
+
+  // const handleDrawerClose = () => {
+  //   setOpen(false);
+  //   setDrawerWidth(0);
+
+  // };
 
   return (
     <Grid sx={{ display: "flex" }}>
-      <NavBar drawerWidth={drawerWidth} handleDrawerOpen = {handleDrawerOpen} open = {open} />
- 
-      <SideBar drawerWidth={drawerWidth} setDrawerWidth = {setDrawerWidth} open = {open} handleDrawerOpen = {handleDrawerOpen} handleDrawerClose={handleDrawerClose} /> 
+      {/* drawerWidth={drawerWidth} handleDrawerOpen = {handleDrawerOpen} open = {open}  */}
+      <NavBar />
+
+      {/* drawerWidth={drawerWidth} setDrawerWidth = {setDrawerWidth} open = {open} handleDrawerOpen = {handleDrawerOpen} handleDrawerClose={handleDrawerClose} */}
+      <SideBar />
 
       <Box component="main" sx={{ flexGrow: 1, p: 0 }}>
         <Toolbar />
@@ -46,7 +53,7 @@ export const JournalLayout = ({ children }) => {
     //       >
     //         <MenuOutlined />
     //       </IconButton>
-    // 
+    //
     //     </Toolbar>
     //   </AppBar>
     //   <Drawer
